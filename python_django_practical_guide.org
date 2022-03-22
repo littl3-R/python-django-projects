@@ -1,0 +1,58 @@
+#+TITLE: Python Django Practical Guide
+#+SUBTITLE: Summary and references
+#+AUTHOR: Andrea Garau
+#+EMAIL: andrea.garau@itoworld.com
+#+DATE: 2022-03-22 15:21:36
+
+#+LANGUAGE: en
+
+#+TOC: table
+#+TOC: listing
+
+* Intro
+  Setting up the project
+  1. installing *django*
+  2. create a *virtual enviroment*
+  3. download and install *python*
+  #+begin_src bash
+    python --version
+  #+end_src
+
+  #+RESULTS:
+  : Python 3.10.2+
+
+  #+begin_src bash
+    django-admin
+  #+end_src
+
+  #+RESULTS:
+* set-up the environment
+  #+begin_src bash
+    pyenv install --list
+    # choose the python version
+    pyenv install 3.10.2 # this install the python version
+    pyenv virtualenv 3.10.2 udepython
+  #+end_src
+
+  then create a file *.python-version*
+  =~/udemy/.python-version=
+  #+begin_src bash
+    cat ../.python-version
+  #+end_src
+
+  #+RESULTS:
+  : udepython
+** test it
+   in the same path
+   #+begin_src bash
+     django-admin
+     python --version
+   #+end_src
+** installing some packages
+   #+begin_src bash
+     pip install django black autopep8
+   #+end_src
+* startproject
+  #+begin_src bash
+    django-admin startproject mypage
+  #+end_src
