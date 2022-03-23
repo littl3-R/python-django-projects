@@ -119,5 +119,4 @@
   #+begin_src html
   {% static "my_path/to/"|add:the_file %}
   #+end_src
-
-  
+* New my_site project

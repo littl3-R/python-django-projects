@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "app.css" %}" type="text/css" media="screen" />
+        {% block css_files %}{% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+        <footer>
+            <p>
+                <span class="option__heading">Django Community</span><span class="sr-only">.</span><br>
+                Connect, get help, or contribute
+            </p>
+        </footer>
+    </body>
+</html>
