@@ -45,3 +45,78 @@
   #+begin_src bash
     django-admin startproject mypage
   #+end_src
+* More on the Django Template Language (DTL)
+  In this course, we're going to use the DTL (Django Template Language)
+  a lot - for example also in the big course project (the "Blog"
+  project).
+
+  You also saw all the key features in this module already.
+
+  There are three important additions, which you'll see later, but
+  which I want to introduce right now already:
+
+  Accessing Dictionary Fields in Templates When accessing dictionary
+  data in a template, you DON'T use this syntax:
+
+  #+begin_export html
+  {{ myDictionary['some_key'] }}
+  #+end_export
+
+  Instead, you use the dot notation - as if it were a regular Python
+  object:
+
+  #+begin_export html
+  {{ myDictionary.some_key }}
+  #+end_export
+
+  This might look strange, but keep in mind, that the DTL is a
+  custom-made language. It looks like Python, but ultimately it is NOT
+  Python - it's a language parsed and executed by Django. Hence, its
+  syntax can deviate - just as it does here.
+
+  Again, you'll see this in action later in the course!
+
+  Calling Functions in Templates Calling functions in templates also
+  works differently than it does in Python.
+
+  Instead of calling it, you use functions like regular variables or
+  properties.
+
+  I.e., instead of:
+
+  #+begin_export html
+  {{ result_from_a_function() }}
+  #+end_export
+
+  you would use
+
+  #+begin_export html
+  {{ result_from_a_function }}
+  #+end_export
+* Building Static URLs Dynamically
+  Later in the course, we'll see an example for a static URL, that is
+  built dynamically.
+
+  What do I mean with that?
+
+  Imagine, that you want to build a static URL where some part of the
+  URL (e.g. the filename) is actually stored in a variable that's
+  exposed to the template.
+
+  So you might want to build the URL like this:
+
+  #+begin_src html
+  {% static "my_path/to/" + the_file %}
+  #+end_src
+
+  Here, "the_file" would be a variable holding the actual filename.
+
+  The above code would fail.
+
+  Instead, you can use the "add" filter provided by Django to
+  construct this path dynamically:
+
+  #+begin_src html
+  {% static "my_path/to/"|add:the_file %}
+  #+end_src
+
