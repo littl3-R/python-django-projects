@@ -58,16 +58,16 @@
   Accessing Dictionary Fields in Templates When accessing dictionary
   data in a template, you DON'T use this syntax:
 
-  #+begin_export html
+  #+begin_src html
   {{ myDictionary['some_key'] }}
-  #+end_export
+  #+end_src
 
   Instead, you use the dot notation - as if it were a regular Python
   object:
 
-  #+begin_export html
+  #+begin_src html
   {{ myDictionary.some_key }}
-  #+end_export
+  #+end_src
 
   This might look strange, but keep in mind, that the DTL is a
   custom-made language. It looks like Python, but ultimately it is NOT
@@ -84,15 +84,15 @@
 
   I.e., instead of:
 
-  #+begin_export html
+  #+begin_src html
   {{ result_from_a_function() }}
-  #+end_export
+  #+end_src
 
   you would use
 
-  #+begin_export html
+  #+begin_src html
   {{ result_from_a_function }}
-  #+end_export
+  #+end_src
 * Building Static URLs Dynamically
   Later in the course, we'll see an example for a static URL, that is
   built dynamically.
@@ -120,3 +120,4 @@
   {% static "my_path/to/"|add:the_file %}
   #+end_src
 
+  

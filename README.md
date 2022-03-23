@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [Intro](#orgf91c775)
-2.  [set-up the environment](#org8133e44)
-    1.  [test it](#org4182a33)
-    2.  [installing some packages](#org4504ea4)
-3.  [startproject](#orgceec2e7)
-4.  [More on the Django Template Language (DTL)](#org5b8c2f8)
-5.  [Building Static URLs Dynamically](#org49ebdbb)
+1.  [Intro](#org133651b)
+2.  [set-up the environment](#org351baf1)
+    1.  [test it](#orgb288ea5)
+    2.  [installing some packages](#org2bbfc31)
+3.  [startproject](#org607bb60)
+4.  [More on the Django Template Language (DTL)](#orga6a3d62)
+5.  [Building Static URLs Dynamically](#org11e3c2b)
 
 
 
-<a id="orgf91c775"></a>
+<a id="org133651b"></a>
 
 # Intro
 
@@ -22,7 +22,7 @@ Setting up the project
 3.  install **django**
 
 
-<a id="org8133e44"></a>
+<a id="org351baf1"></a>
 
 # set-up the environment
 
@@ -37,7 +37,7 @@ then create a file **.python-version**
     cat ../.python-version
 
 
-<a id="org4182a33"></a>
+<a id="orgb288ea5"></a>
 
 ## test it
 
@@ -47,21 +47,21 @@ in the same path
     python --version
 
 
-<a id="org4504ea4"></a>
+<a id="org2bbfc31"></a>
 
 ## installing some packages
 
     pip install django black autopep8
 
 
-<a id="orgceec2e7"></a>
+<a id="org607bb60"></a>
 
 # startproject
 
     django-admin startproject mypage
 
 
-<a id="org5b8c2f8"></a>
+<a id="orga6a3d62"></a>
 
 # More on the Django Template Language (DTL)
 
@@ -77,12 +77,12 @@ which I want to introduce right now already:
 Accessing Dictionary Fields in Templates When accessing dictionary
 data in a template, you DON'T use this syntax:
 
-{{ myDictionary['some_key'] }}
+    {{ myDictionary['some_key'] }}
 
 Instead, you use the dot notation - as if it were a regular Python
 object:
 
-{{ myDictionary.some_key }}
+    {{ myDictionary.some_key }}
 
 This might look strange, but keep in mind, that the DTL is a
 custom-made language. It looks like Python, but ultimately it is NOT
@@ -99,14 +99,14 @@ properties.
 
 I.e., instead of:
 
-{{ result_from_a_function() }}
+    {{ result_from_a_function() }}
 
 you would use
 
-{{ result_from_a_function }}
+    {{ result_from_a_function }}
 
 
-<a id="org49ebdbb"></a>
+<a id="org11e3c2b"></a>
 
 # Building Static URLs Dynamically
 
