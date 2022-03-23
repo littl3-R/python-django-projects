@@ -1,7 +1,7 @@
 #+TITLE: python-django-projects
 #+SUBTITLE: Summary and references
 #+AUTHOR: littl3_R
-#+EMAIL: litt3.R@gmail.com
+#+EMAIL: littl3_R@gmail.com
 #+DATE: 2022-03-22 15:21:36
 
 #+LANGUAGE: en
@@ -11,21 +11,10 @@
 
 * Intro
   Setting up the project
-  1. installing *django*
-  2. create a *virtual enviroment*
-  3. download and install *python*
-  #+begin_src bash
-    python --version
-  #+end_src
+  1. download and install *python*
+  2. create a *virtual environment*
+  3. install *django*
 
-  #+RESULTS:
-  : Python 3.10.2+
-
-  #+begin_src bash
-    django-admin
-  #+end_src
-
-  #+RESULTS:
 * set-up the environment
   #+begin_src bash
     pyenv install --list

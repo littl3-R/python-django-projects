@@ -1,30 +1,26 @@
 
 # Table of Contents
 
-1.  [Intro](#org8bd0157)
-2.  [set-up the environment](#org71887cb)
-    1.  [test it](#orgb2f88b8)
-    2.  [installing some packages](#orgc064ab5)
-3.  [startproject](#org5a466dc)
+1.  [Intro](#orgbb52650)
+2.  [set-up the environment](#org12f1833)
+    1.  [test it](#orgf3a57dc)
+    2.  [installing some packages](#org0d814ba)
+3.  [startproject](#orgcb798c5)
 
 
 
-<a id="org8bd0157"></a>
+<a id="orgbb52650"></a>
 
 # Intro
 
 Setting up the project
 
-1.  installing **django**
+1.  download and install **python**
 2.  create a **virtual environment**
-3.  download and install **python**
-
-    python --version
-
-    django-admin
+3.  install **django**
 
 
-<a id="org71887cb"></a>
+<a id="org12f1833"></a>
 
 # set-up the environment
 
@@ -39,7 +35,7 @@ then create a file **.python-version**
     cat ../.python-version
 
 
-<a id="orgb2f88b8"></a>
+<a id="orgf3a57dc"></a>
 
 ## test it
 
@@ -49,14 +45,14 @@ in the same path
     python --version
 
 
-<a id="orgc064ab5"></a>
+<a id="org0d814ba"></a>
 
 ## installing some packages
 
     pip install django black autopep8
 
 
-<a id="org5a466dc"></a>
+<a id="orgcb798c5"></a>
 
 # startproject
 
