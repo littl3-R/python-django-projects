@@ -16,7 +16,7 @@
 Setting up the project
 
 1.  installing **django**
-2.  create a **virtual enviroment**
+2.  create a **virtual environment**
 3.  download and install **python**
 
     python --version
