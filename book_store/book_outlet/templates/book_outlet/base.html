@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="">
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <h1></h1>
+        </main>
+        {% block content %}
+        {% endblock %}
+        <footer>
+            <p>
+                <span class="option__heading">Django Community</span><span class="sr-only">.</span><br>
+                Connect, get help, or contribute
+            </p>
+        </footer>
+    </body>
+</html>
