@@ -1,17 +1,18 @@
 
 # Table of Contents
 
-1.  [Intro](#org133651b)
-2.  [set-up the environment](#org351baf1)
-    1.  [test it](#orgb288ea5)
-    2.  [installing some packages](#org2bbfc31)
-3.  [startproject](#org607bb60)
-4.  [More on the Django Template Language (DTL)](#orga6a3d62)
-5.  [Building Static URLs Dynamically](#org11e3c2b)
+1.  [Intro](#orgb3a643b)
+2.  [set-up the environment](#org914cf89)
+    1.  [test it](#org1f4a3ae)
+    2.  [installing some packages](#org4c5749b)
+3.  [startproject](#orged01392)
+4.  [More on the Django Template Language (DTL)](#org7452d35)
+5.  [Building Static URLs Dynamically](#orge61b74e)
+6.  [Circular Relations & Lazy Relations](#orgfdc4f22)
 
 
 
-<a id="org133651b"></a>
+<a id="orgb3a643b"></a>
 
 # Intro
 
@@ -22,7 +23,7 @@ Setting up the project
 3.  install **django**
 
 
-<a id="org351baf1"></a>
+<a id="org914cf89"></a>
 
 # set-up the environment
 
@@ -37,7 +38,7 @@ then create a file **.python-version**
     cat ../.python-version
 
 
-<a id="orgb288ea5"></a>
+<a id="org1f4a3ae"></a>
 
 ## test it
 
@@ -47,21 +48,21 @@ in the same path
     python --version
 
 
-<a id="org2bbfc31"></a>
+<a id="org4c5749b"></a>
 
 ## installing some packages
 
     pip install django black autopep8
 
 
-<a id="org607bb60"></a>
+<a id="orged01392"></a>
 
 # startproject
 
     django-admin startproject mypage
 
 
-<a id="orga6a3d62"></a>
+<a id="org7452d35"></a>
 
 # More on the Django Template Language (DTL)
 
@@ -106,7 +107,7 @@ you would use
     {{ result_from_a_function }}
 
 
-<a id="org11e3c2b"></a>
+<a id="orge61b74e"></a>
 
 # Building Static URLs Dynamically
 
@@ -131,4 +132,58 @@ Instead, you can use the "add" filter provided by Django to
 construct this path dynamically:
 
     {% static "my_path/to/"|add:the_file %}
+
+
+<a id="orgfdc4f22"></a>
+
+# Circular Relations & Lazy Relations
+
+Sometimes, you might have two models that depend on each other -
+i.e. you end up with a circular relationship.
+
+Or you have a model that has a relation with itself.
+
+Or you have a model that should have a relation with some built-in
+model (i.e. built into Django) or a model defined in another
+application.
+
+Below, you find examples for all three cases that include Django's
+solution for these kinds of "problems": Lazy relationships. You can
+also check out the official docs in addition.
+
+1.  Two models that have a circular relationship
+
+    class Product(models.Model):
+    # ... other fields ...
+    last_buyer = models.ForeignKey('User')
+    
+    class User(models.Model):
+    # ... other fields ...
+    created_products = models.ManyToManyField('Product')
+
+In this example, we have multiple relationships between the same two
+models. Hence we might need to define them in both models. By using
+the model name as a string instead of a direct reference, Django is
+able to resolve such dependencies.
+
+1.  Relation with the same model
+
+    class User(models.Model):
+    # ... other fields ...
+    friends = models.ManyToManyField('self') 
+
+The special self keyword (used as a string value) tells Django that
+it should form a relationship with (other) instances of the same
+model.
+
+1.  Relationships with other apps and their models (built-in or custom apps)
+
+    class Review(models.Model):
+    # ... other fields ...
+    product = models.ForeignKey('store.Product') # '<appname>.<modelname>'
+
+You can reference models defined in other Django apps (no matter if
+created by you, via python manage.py startapp <appname> or if it's a
+built-in or third-party app) by using the app name and then the name
+of the model inside the app.
 
