@@ -51,20 +51,7 @@ class Book(models.Model):
     )
     is_bestselling = models.BooleanField(default=False)
     slug = models.SlugField(default="", blank=True, null=False, db_index=True)
-<<<<<<< HEAD
-<<<<<<< HEAD
     published_countries = models.ManyToManyField(Country)
-=======
->>>>>>> 64b2c86 (Admin features)
-=======
-<<<<<<< ours
-    published_countries = models.ManyToManyField(Country)
-=======
->>>>>>> theirs
-=======
-    published_countries = models.ManyToManyField(Country)
->>>>>>> b44c8c5 (New relationships)
->>>>>>> 4effc7d (New relationships)
 
     def get_absolute_url(self):
         return reverse("book-detail", args=[self.slug])
