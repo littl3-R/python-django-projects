@@ -175,3 +175,73 @@
   created by you, via python manage.py startapp <appname> or if it's a
   built-in or third-party app) by using the app name and then the name
   of the model inside the app.
+* Deployed
+** settings.py
+   ref: [[https://docs.djangoproject.com/en/4.0/topics/settings/][here]]
+   
+   1. NO SHOW the ~SECRET_KEY~ use an env instead
+   2. ~DEBUG~ False
+   3. ~ALLOWED_HOSTS~
+   4. ~DATABASES~ may change
+*** Static data
+    In production we'll collect in one location
+    you have to set up the ~STATIC_ROOT~
+
+    #+begin_src bash
+      python manage.py collectstatic
+    #+end_src
+
+    This create a new folder with static files, but don't touch these
+    files!!  Touch your files as usaul and then if necessary re-run
+    the command
+
+    Serve these files from *Django* change in =settings.py=
+
+    Before deployed run:
+    1. =python manage.py makemigrations=
+    2. =python manage.py migrate=
+    3. =python mange.py createsuperuser=
+** Virtual Enviroment
+   ref: [[https://docs.python.org/3/library/venv.html#creating-virtual-environments][here]]
+   
+   =python -m venv django_my_site=
+   this command create a new directory
+   you have to activate the venv:
+   =source ~/my_site/django_my_site/bin/activate=
+
+   then install the packages, in this case:
+   =python -m pip install Django Pillow=
+   
+** Deployed
+   Create the ~requirementes.txt~
+   =python -m pip freeze > requirements.txt=
+
+** Enviroment Variables
+   Change all the domanis which you should be able to send requests
+
+** set-up
+   1. create a folder .ebextensions
+   2. crate a file =django.config=
+      #+begin_example
+        option_settings:
+          aws:elasticbeanstalk:container:python:
+            WSGIPath: my_site.wsgi:application
+      #+end_example
+   3. create a .zip file not all the folder some files:
+      1. .ebextensions
+      2. blog
+      3. db.sqlite3
+      4. manage.py
+      5. my_site
+      6. requirements.txt
+      7. staticfiles
+      8. templates
+      9. uploads
+
+** back to AWS
+   "CONFIGURE MORE OPTIONS"
+
+   there add the Enviromant Variable
+
+   "CREATE APP"
+
